@@ -1,15 +1,29 @@
 // Signup.tsx
 import React, { useState } from 'react';
 import { Box, Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
+import { useDispatcher } from '../hooks/UseDispatcher';
+import { PatientReducer, initialState } from '../features/patients/Reducer';
+import { getListVisits } from '../features/patients/Action';
+import { AxiosError } from 'axios';
 
 const Signup: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const {get ,state} = useDispatcher(PatientReducer, initialState)
   const handleSignup = async () => {
     // Call your Spring Boot API for user registration
     // Handle success and error scenarios appropriately
   };
+
+  const fetchTest = async () =>{
+    get(getListVisits())
+    .then((response: any) => {
+      const data = response.data;
+    })
+    .catch((error: AxiosError)=> {
+      console.error("Error Code :" + error.code)
+    }) 
+  }
 
   return (
     <VStack spacing={4} align="center">
