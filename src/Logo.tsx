@@ -7,6 +7,7 @@ import {
   usePrefersReducedMotion,
 } from "@chakra-ui/react"
 import logo from "./logo.svg"
+import { Link } from "react-router-dom"
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -20,5 +21,9 @@ export const Logo = forwardRef<ImageProps, "img">((props, ref) => {
     ? undefined
     : `${spin} infinite 20s linear`
 
-  return <chakra.img animation={animation} src={logo} ref={ref} {...props} />
+  return (
+    <Link to={"/"}>
+      <chakra.img animation={animation} src={logo} ref={ref} {...props} />
+    </Link>
+  )
 })

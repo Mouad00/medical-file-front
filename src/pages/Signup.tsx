@@ -5,6 +5,7 @@ import { useDispatcher } from '../hooks/UseDispatcher';
 import { PatientReducer, initialState } from '../features/patients/Reducer';
 import { getListVisits } from '../features/patients/Action';
 import { AxiosError } from 'axios';
+import LandingLayout from '../components/LandingLayout';
 
 const Signup: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -26,7 +27,8 @@ const Signup: React.FC = () => {
   }
 
   return (
-    <VStack spacing={4} align="center">
+    <LandingLayout width="100%">
+    <VStack spacing={4} align="center" mt={100}>
       <Box w="300px">
         <FormControl>
           <FormLabel>Username</FormLabel>
@@ -41,6 +43,7 @@ const Signup: React.FC = () => {
         </Button>
       </Box>
     </VStack>
+    </LandingLayout>
   );
 };
 
